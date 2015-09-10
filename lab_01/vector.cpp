@@ -88,3 +88,10 @@ void vector::replace(int size) {
 		coordinates[i] = 0;
 	}
 }
+double vector::length() {
+	int sumOfSquares = 0;
+	for (int i = 0; i < number; i++) {
+		sumOfSquares += coordinates[i] * coordinates[i];
+	}
+	return (sqrt(sumOfSquares));
+}

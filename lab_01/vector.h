@@ -21,4 +21,5 @@ public:
 	int product(void);
 	void add(int sum);
 	void multiplication(int prod);
+	double length();
 };

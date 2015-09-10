@@ -7,7 +7,7 @@ using namespace std;
 	Created by NickLatkovich
 */
 
-const unsigned int VECTORS = 10;
+const unsigned int VECTORS = 9;
 
 void cls(void) {
 	system("cls");
@@ -47,7 +47,7 @@ void printSize(vector vectors[]) {
 	cls();
 	cout << "\n --- Get size of vectors ---\n\n ";
 	for (int i = 0; i < VECTORS; i++) {
-		cout << i + 1 << ". S";
+		cout << i + 1 << ". S ";
 		vectors[i].print();
 		cout << " = " << vectors[i].getSize() << "\n ";
 	}
@@ -188,6 +188,51 @@ void sumVectors(vector vectors[]) {
 	}
 	pause();
 }
+void vectorsBy0(vector vectors[]) {
+	cls();
+	bool one = 0;
+	cout << "\n --- Vectors containing zero ---\n\n ";
+	for (int i = 0; i < VECTORS; i++) {
+		bool b = 0;
+		for (int j = 0; j < vectors[i].getSize(); j++) {
+			if (vectors[i].getCoordinate(j) == 0) {
+				b = 1;
+			}
+		}
+		if (b) {
+			cout << i << ". ";
+			vectors[i].print();
+			cout << "\n ";
+			one = 1;
+		}
+	}
+	if (!one) {
+		cout << "Nope vectors containing zero!\n\n ";
+	}
+	else {
+		cout << "\n ";
+	}
+	pause();
+}
+void vectorsLength(vector vectors[]) {
+	cls();
+	double minLength = -1;
+	int numberOfMinLength = 0;
+	cout << "\n --- Length vectors ---\n\n ";
+	for (int i = 0; i < VECTORS; i++) {
+		cout << i + 1 << ". L ";
+		vectors[i].print();
+		double temp = vectors[i].length();
+		if (minLength == -1 || minLength > temp) {
+			minLength = temp;
+			numberOfMinLength = i;
+		}
+		cout << " = " << temp;
+		cout << "\n ";
+	}
+	cout << "\n Min Length is L" << numberOfMinLength + 1 << " = " << minLength << "\n\n ";
+	pause();
+}
 int _tmain(int argc, _TCHAR* argv[])
 {
 	vector vectors[VECTORS];
@@ -203,6 +248,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		cout << "\n 5. Multiplied by the number of";
 		cout << "\n 6. Set coordinate";
 		cout << "\n 7. Sum two vectors";
+		cout << "\n 8. Print vectors containing zero";
+		cout << "\n 9. Get length of vectors";
 		cout << "\n 0. Exit\n\n >> ";
 		cin >> setter;
 		switch (setter) {
@@ -226,6 +273,13 @@ int _tmain(int argc, _TCHAR* argv[])
 			break;
 		case 7:
 			sumVectors(vectors);
+			break;
+		case 8:
+			vectorsBy0(vectors);
+			break;
+		case 9:
+			vectorsLength(vectors);
+			break;
 		case 0:
 			cls();
 			cout << "\n --- Exit ---\n\n ";
